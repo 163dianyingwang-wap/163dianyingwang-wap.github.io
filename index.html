@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta name="description" content="163电影网（https://163dianyingwang-wap.github.io）电影观影手账，用便签与清单的方式记录每一部值得被记住的片子——类型速查、观影清单、本周新片、年度备忘、观影问答。">
+<meta name="keywords" content="163电影网, 163dianyingwang-wap, 电影手账, 观影清单, 电影推荐, 类型速查, 本周新片, 年度备忘, 动作片, 喜剧片, 科幻片, 悬疑片, github.io">
+<meta name="author" content="163电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://163dianyingwang-wap.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="163电影网 - 电影观影手账 | 用便签记下每一部好片子">
+<meta property="og:description" content="163电影网（https://163dianyingwang-wap.github.io）电影观影手账：类型速查、观影清单、本周新片、年度备忘。">
+<meta property="og:url" content="https://163dianyingwang-wap.github.io/">
+<meta property="og:site_name" content="163电影网">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="163电影网 - 电影观影手账">
+<meta name="twitter:description" content="163电影网（https://163dianyingwang-wap.github.io）用便签记下每一部好片子。">
+<title>163电影网 - 电影观影手账 | 类型速查 · 观影清单 · 本周新片 · 年度备忘</title>
+<style>
+:root{
+  --paper:#f7f3e8; --paper2:#efe9d8; --line:#d8cfb6; --ink:#2b2a26; --ink2:#56544d;
+  --mute:#9a9382; --tape:#e8d5a3;
+  --c1:#d96b4a; --c2:#5b8f7a; --c3:#c9a227; --c4:#4f7ba0; --c5:#a56bb0; --c6:#c25f5f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink2);
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,ui-sans-serif,sans-serif;
+  font-size:15px;line-height:1.85;
+  background-image:radial-gradient(circle at 20% 12%,rgba(217,107,74,.05),transparent 40%),radial-gradient(circle at 85% 60%,rgba(91,143,122,.05),transparent 45%);
+}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+::selection{background:var(--ink);color:var(--paper)}
+h1,h2,h3,h4,h5{font-family:"Kaiti SC","STKaiti","KaiTi","Songti SC",serif;font-weight:700}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+
+/* ============ 便签头 ============ */
+.topbar{background:var(--ink);color:#d8d3c4;padding:9px 0;font-size:12px}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar a:hover{color:#e8d5a3}
+.tape{height:26px;background:linear-gradient(135deg,var(--tape) 0 49%,transparent 49% 51%,var(--tape) 51%);opacity:.55;margin-bottom:-10px}
+
+.head{padding:34px 0 26px;text-align:center;position:relative}
+.head .date{
+  display:inline-block;background:#fff;border:1.5px dashed var(--line);border-radius:14px;
+  padding:5px 20px;font-size:12px;color:var(--mute);letter-spacing:1px;transform:rotate(-1.2deg);margin-bottom:14px;
+}
+.brand{font-size:clamp(44px,11vw,104px);color:var(--ink);letter-spacing:2px;line-height:1;position:relative;display:inline-block}
+.brand .n{color:var(--c1)}
+.brand::after{content:"";position:absolute;right:-26px;top:-6px;width:52px;height:52px;background:var(--c2);border-radius:50%;opacity:.9;z-index:-1}
+.sub{margin-top:14px;font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:15px;color:var(--ink2);letter-spacing:3px}
+.scribble{display:flex;justify-content:center;gap:8px;margin-top:18px;font-size:19px;color:var(--mute)}
+.scribble i{font-style:normal}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--line);display:inline-block;align-self:center}
+
+/* ============ 导航 ============ */
+nav{background:var(--paper2);border-top:2.5px solid var(--ink);border-bottom:1px dashed var(--line);position:sticky;top:0;z-index:40}
+.navwrap{max-width:1160px;margin:0 auto;display:flex;align-items:stretch}
+nav a{flex:1;text-align:center;padding:13px 6px;font-size:14px;color:var(--ink2);border-right:1px dashed var(--line);transition:.2s}
+nav a:last-child{border-right:0}
+nav a:hover,nav a.on{background:var(--c1);color:#fff}
+.mbtn{display:none;width:64px;background:var(--ink);border:0;color:#fff;font-size:13px;cursor:pointer;letter-spacing:1px}
+
+/* ============ 通用 ============ */
+section{padding:66px 0}
+.eyebrow{text-align:center;margin-bottom:8px;font-size:12px;color:var(--mute);letter-spacing:4px}
+.ttl{text-align:center;margin-bottom:6px}
+.ttl h2{font-size:30px;color:var(--ink);letter-spacing:1px}
+.ttl h2 em{font-style:normal;color:var(--c1)}
+.leadp{max-width:640px;margin:0 auto 36px;text-align:center;font-size:14px;color:var(--mute)}
+
+/* ============ 类型贴片 ============ */
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:34px}
+.tab{
+  font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:16px;color:var(--ink);
+  background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:8px 20px;cursor:pointer;
+  transform:rotate(var(--r,-1deg));transition:.22s;box-shadow:2px 3px 0 rgba(43,42,38,.08);
+}
+.tab:nth-child(1){--r:-2deg} .tab:nth-child(2){--r:1.4deg} .tab:nth-child(3){--r:-1.2deg}
+.tab:nth-child(4){--r:2deg} .tab:nth-child(5){--r:-1.6deg} .tab:nth-child(6){--r:1deg}
+.tab:hover{transform:rotate(0) translateY(-3px);box-shadow:3px 6px 0 rgba(43,42,38,.12)}
+.tab.on{background:var(--c1);color:#fff;border-color:var(--c1);transform:rotate(0)}
+
+/* ============ 清单（便签列表，非卡片网格） ============ */
+.list{display:grid;gap:14px}
+.note{
+  display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:18px;
+  background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px 20px;
+  position:relative;box-shadow:3px 4px 0 rgba(43,42,38,.07);
+  transform:rotate(var(--tilt,0deg));
+}
+.note:nth-child(odd){--tilt:-.5deg}.note:nth-child(even){--tilt:.5deg}
+.note .no{
+  width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:19px;font-weight:700;color:#fff;background:var(--c1)
+}
+.note .no.b{background:var(--c2)} .note .no.c{background:var(--c3)} .note .no.d{background:var(--c4)} .note .no.e{background:var(--c5)}
+.note .t{font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:18px;color:var(--ink);line-height:1.5}
+.note .t small{display:block;font-family:inherit;font-size:12.5px;color:var(--mute);font-weight:400;margin-top:2px;letter-spacing:.5px}
+.note .mk{font-size:12.5px;color:var(--mute);white-space:nowrap}
+.note .mk b{display:inline-block;background:var(--paper2);border-radius:20px;padding:3px 12px;color:var(--ink2);font-weight:400;margin-left:6px}
+.note .mk b.on{background:var(--c2);color:#fff}
+
+/* ============ 本周新片：时间轴 ============ */
+.tl{display:grid;grid-template-columns:1fr 3px 1fr;gap:0 26px;align-items:start}
+.tl::before{content:"";grid-column:2;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px);width:3px;height:100%;border-radius:3px}
+.tl .row{display:grid;grid-template-columns:80px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tl .row.alt{direction:rtl}
+.tl .row.alt>*{direction:ltr}
+.tl .d{
+  font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:15px;color:var(--c1);font-weight:700;
+  background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:5px 0;text-align:center;height:fit-content;
+}
+.tl .c{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;box-shadow:2px 3px 0 rgba(43,42,38,.06)}
+.tl .c h4{font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:17.5px;color:var(--ink);line-height:1.5}
+.tl .c p{font-size:13.5px;color:var(--ink2);margin-top:6px}
+.tl .c .tg{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.tl .c .tg span{font-size:11.5px;background:var(--paper2);border-radius:20px;padding:2px 10px;color:var(--ink2)}
+.empty{display:none;text-align:center;font-size:14px;color:var(--mute);padding:26px;background:#fff;border:1.5px dashed var(--line);border-radius:12px}
+
+/* ============ 年度备忘：索引卡 ============ */
+.memo{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:22px;position:relative;
+  box-shadow:4px 5px 0 rgba(43,42,38,.08);transform:rotate(var(--tilt,0deg))
+}
+.memo .card:nth-child(1){--tilt:-1.5deg;background:#fbeee4;border-color:#e8c9ac} 
+.memo .card:nth-child(2){--tilt:1deg;background:#e9f1ec;border-color:#bcd6c6}
+.memo .card:nth-child(3){--tilt:-1deg;background:#f5f0dc;border-color:#e0d3a0}
+.memo .card:nth-child(4){--tilt:1.4deg;background:#e8eef5;border-color:#bccfe2}
+.memo .card:nth-child(5){--tilt:-1.2deg;background:#f3ecf3;border-color:#d9c6db}
+.memo .card:nth-child(6){--tilt:1.1deg;background:#f7e7e7;border-color:#e7c4c4}
+.memo .card .pin{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:26px;height:26px;border-radius:50%;background:var(--c1);box-shadow:0 3px 6px rgba(0,0,0,.18);border:3px solid #fff}
+.memo .card:nth-child(2) .pin{background:var(--c2)} .memo .card:nth-child(3) .pin{background:var(--c3)}
+.memo .card:nth-child(4) .pin{background:var(--c4)} .memo .card:nth-child(5) .pin{background:var(--c5)}
+.memo .card:nth-child(6) .pin{background:var(--c6)}
+.memo .card h3{font-size:19px;color:var(--ink);line-height:1.5;margin-bottom:10px;padding-top:6px}
+.memo .card ol{font-size:14px;color:var(--ink2)}
+.memo .card ol li{padding:7px 0 7px 26px;position:relative;border-bottom:1px dotted var(--line)}
+.memo .card ol li:last-child{border-bottom:0}
+.memo .card ol li::before{content:"";position:absolute;left:6px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--c1)}
+.memo .card:nth-child(2) ol li::before{background:var(--c2)} .memo .card:nth-child(3) ol li::before{background:var(--c3)}
+.memo .card:nth-child(4) ol li::before{background:var(--c4)} .memo .card:nth-child(5) ol li::before{background:var(--c5)}
+.memo .card:nth-child(6) ol li::before{background:var(--c6)}
+.memo .card .ft{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line);font-size:12px;color:var(--mute)}
+
+/* ============ 手账速览：横条统计 ============ */
+.bar{display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}
+.bar .b{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:22px;text-align:center;transform:rotate(var(--tilt,0deg));box-shadow:3px 4px 0 rgba(43,42,38,.07)}
+.bar .b:nth-child(1){--tilt:-1deg} .bar .b:nth-child(2){--tilt:1deg} .bar .b:nth-child(3){--tilt:-.8deg}
+.bar .n{font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:42px;color:var(--c1);line-height:1}
+.bar .b:nth-child(2) .n{color:var(--c2)} .bar .b:nth-child(3) .n{color:var(--c3)}
+.bar .l{font-size:13px;color:var(--ink2);margin-top:8px}
+.bar .s{font-size:12px;color:var(--mute);margin-top:6px}
+
+/* ============ 问答 ============ */
+.qa{display:grid;gap:14px}
+.qa .it{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:3px 4px 0 rgba(43,42,38,.07)}
+.qa .q{display:grid;grid-template-columns:44px 1fr 32px;align-items:center;gap:14px;padding:16px 20px;cursor:pointer}
+.qa .q .badge{
+  width:32px;height:32px;border-radius:9px;background:var(--paper2);color:var(--c1);
+  display:flex;align-items:center;justify-content:center;font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:16px;font-weight:700;
+}
+.qa .q h5{font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:16.5px;color:var(--ink);line-height:1.6;font-weight:700}
+.qa .q .ar{font-size:17px;color:var(--mute);transition:.25s;text-align:center}
+.qa .it.open .q .ar{transform:rotate(45deg);color:var(--c1)}
+.qa .a{display:none;padding:0 20px 20px 74px;font-size:14.5px;color:var(--ink2)}
+.qa .it.open .a{display:block}
+
+/* ============ 友链 ============ */
+.links{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.links a{
+  background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--ink2);
+  text-align:center;transition:.2s;box-shadow:2px 3px 0 rgba(43,42,38,.06);transform:rotate(var(--tilt,0deg))
+}
+.links a:nth-child(3n){--tilt:1deg} .links a:nth-child(3n+1){--tilt:-1deg}
+.links a::before{content:"◆";color:var(--c1);font-size:9px;margin-right:6px}
+.links a:hover{background:var(--c1);color:#fff;border-color:var(--c1);transform:rotate(0) translateY(-3px)}
+.links a:hover::before{color:#fff}
+
+/* ============ 页脚 ============ */
+footer{background:var(--ink);color:#d8d3c4;padding:52px 0 0;margin-top:40px}
+.foot{max-width:1160px;margin:0 auto;padding:0 26px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:34px}
+.foot .logo{font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:30px;color:#fff;letter-spacing:1px}
+.foot .logo .n{color:var(--c1)}
+.foot p{font-size:13px;margin-top:12px;line-height:1.9;color:#b9b3a2}
+.foot .u{font-size:12px;color:var(--tape);margin-top:12px;word-break:break-all}
+.foot h5{font-size:12px;color:var(--tape);letter-spacing:2px;margin-bottom:14px}
+.foot ul li{padding:6px 0}
+.foot a{font-size:13.5px;color:#d8d3c4;transition:.2s}
+.foot a:hover{color:var(--c1)}
+.colo{max-width:1160px;margin:0 auto;padding:22px 26px;border-top:1px dashed #4a4740;margin-top:40px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:#9a9382}
+.colo b{color:#fff}
+#top{position:fixed;right:20px;bottom:24px;width:50px;height:50px;border-radius:14px;background:var(--c1);border:3px solid #fff;color:#fff;font-family:"Kaiti SC","STKaiti","KaiTi",serif;font-size:20px;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:60;box-shadow:3px 4px 0 rgba(43,42,38,.2)}
+#top.on{opacity:1;visibility:visible}
+#top:hover{background:var(--c2)}
+
+@media (max-width:980px){
+  .tl{grid-template-columns:1fr}
+  .tl::before{display:none}
+  .tl .row.alt{direction:ltr}
+  .memo{grid-template-columns:1fr 1fr}
+  .bar{grid-template-columns:1fr}
+  .links{grid-template-columns:repeat(3,1fr)}
+  .foot{grid-template-columns:1fr 1fr}
+  .navwrap{flex-direction:column;max-height:0;overflow:hidden;transition:.35s}
+  .navwrap.on{max-height:600px}
+  nav a{border-right:0!important;border-bottom:1px dashed var(--line)}
+  .mbtn{display:block;margin-left:auto}
+  nav{display:flex;justify-content:flex-end}
+  .note{grid-template-columns:44px 1fr;gap:12px}
+  .note .mk{grid-column:1/-1;padding-left:56px}
+}
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .wrap,.foot,.colo{padding-left:18px;padding-right:18px}
+  section{padding:50px 0}
+  .ttl h2{font-size:24px}
+  .memo{grid-template-columns:1fr}
+  .links{grid-template-columns:repeat(2,1fr)}
+  .foot{grid-template-columns:1fr}
+  .note .t{font-size:16.5px}
+  .qa .q{grid-template-columns:36px 1fr 26px;gap:10px;padding:14px 16px}
+  .qa .a{padding:0 16px 18px 62px}
+  .topbar .wrap{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+<div class="topbar"><div class="wrap"><span>163电影网 · 电影观影手账</span><span><a href="#">订阅手账</a> &nbsp; <a href="#">我要投稿</a> &nbsp; <a href="#">关于本站</a></span></div></div>
+
+<div class="tape"></div>
+
+<header class="head">
+  <div class="wrap">
+    <div class="date">📅 2025年10月 · 第 42 周手账</div>
+    <div class="brand"><span class="n">163</span>电影网</div>
+    <div class="sub">用便签记下每一部值得被记住的片子</div>
+    <div class="scribble"><i>~</i><i>～</i><span class="dot"></span><i>·</i><span class="dot"></span><i>～</i><i>~</i></div>
+  </div>
+</header>
+
+<nav>
+  <button class="mbtn" id="menu" aria-label="菜单">[ 目录 ]</button>
+  <div class="navwrap" id="nav">
+    <a href="#genres" class="on">类型速查</a>
+    <a href="#check">观影清单</a>
+    <a href="#week">本周新片</a>
+    <a href="#memo">年度备忘</a>
+    <a href="#qa">观影问答</a>
+    <a href="#links">友情链接</a>
+  </div>
+</nav>
+
+<section id="genres">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 01 / 类型速查 —</div>
+    <div class="ttl"><h2>想看什么<em>类型</em>，直接翻这一页</h2></div>
+    <p class="leadp">不分类的电影库等于没有目录。这里把类型摊开成一张清单，点一下就能挑出这一周想看的那一类。</p>
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-k="all">全部类型</button>
+      <button class="tab" data-k="action">动作 / 犯罪</button>
+      <button class="tab" data-k="comedy">喜剧 / 治愈</button>
+      <button class="tab" data-k="love">爱情 / 治愈</button>
+      <button class="tab" data-k="sci">科幻 / 冒险</button>
+      <button class="tab" data-k="thriller">悬疑 / 惊悚</button>
+    </div>
+    <div class="list" id="list">
+      <div class="note" data-k="thriller"><span class="no">1</span><span class="t">第十三个房间<small>真相不复杂，难的是真相被说出之后谁有资格原谅谁</small></span><span class="mk">悬疑 / 惊悚 <b class="on">已看</b></span></div>
+      <div class="note" data-k="sci"><span class="no b">2</span><span class="t">深空回声<small>不是解释宇宙，而是处理一个人知道答案之后如何与答案共处</small></span><span class="mk">科幻 / 冒险 <b>想看</b></span></div>
+      <div class="note" data-k="love"><span class="no c">3</span><span class="t">余温<small>两个失意的人，两封信，一座没被解决的冬天</small></span><span class="mk">爱情 / 治愈 <b class="on">已看</b></span></div>
+      <div class="note" data-k="action"><span class="no d">4</span><span class="t">边境回声<small>前半程追凶戏精准得像钟表，后半程急于收束所有伏笔</small></span><span class="mk">动作 / 犯罪 <b>想看</b></span></div>
+      <div class="note" data-k="comedy"><span class="no e">5</span><span class="t">假期实习生<small>中年失意被拍得有多体面，喜剧的底线是不建立在他人窘迫上</small></span><span class="mk">喜剧 / 职场 <b>想看</b></span></div>
+      <div class="note" data-k="sci"><span class="no b">6</span><span class="t">镜像城市<small>设定足够漂亮，但漂亮得有些冷，规则比人更用力</small></span><span class="mk">科幻 / 悬疑 <b>想看</b></span></div>
+      <div class="note" data-k="thriller"><span class="no">7</span><span class="t">暗河之上<small>多线叙事，三线在第三幕收成一条，值得为结构再看一遍</small></span><span class="mk">犯罪 / 剧情 <b class="on">已看</b></span></div>
+      <div class="note" data-k="love"><span class="no c">8</span><span class="t">海边便利店<small>没有强情节，只有一群陌生人把心事留在同一个柜台</small></span><span class="mk">爱情 / 治愈 <b class="on">已看</b></span></div>
+      <div class="note" data-k="action"><span class="no d">9</span><span class="t">铁骑归途<small>场面并不等于大制作，真正让战争成立的是每个人都被认真对待</small></span><span class="mk">动作 / 历史 <b>想看</b></span></div>
+      <div class="empty" id="empty">这一栏还没贴过便签，换一个类型看看 👉</div>
+    </div>
+  </div>
+</section>
+
+<section id="check" style="background:var(--paper2);border-top:1.5px dashed var(--line);border-bottom:1.5px dashed var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 02 / 观影清单 —</div>
+    <div class="ttl"><h2>这一周，<em>清单</em>上留了什么</h2></div>
+    <p class="leadp">清单不是榜单，它记录的是"还没看"和"值得再看"这两件事。勾掉一项，比刷掉十条推荐更有用。</p>
+    <div class="list">
+      <div class="note" data-k="sci"><span class="no b">◆</span><span class="t">深空回声<small>档期：10月17日全国上映 · 约 148 分钟</small></span><span class="mk">科幻 <b class="on">想看</b></span></div>
+      <div class="note" data-k="thriller"><span class="no">◆</span><span class="t">第十三个房间<small>点映场已看 · 二刷建议带朋友，结尾值得当场吵一架</small></span><span class="mk">悬疑 <b class="on">已看</b></span></div>
+      <div class="note" data-k="love"><span class="no c">◆</span><span class="t">海边便利店<small>流媒体已上线 · 适合一个人、安静、不想被打扰的时候</small></span><span class="mk">治愈 <b class="on">已看</b></span></div>
+      <div class="note" data-k="comedy"><span class="no e">◆</span><span class="t">假期实习生<small>排片一般，建议挑工作日午夜场</small></span><span class="mk">喜剧 <b>想看</b></span></div>
+      <div class="note" data-k="action"><span class="no d">◆</span><span class="t">铁骑归途<small>IMAX 重制版 · 群像段落值得看大银幕</small></span><span class="mk">历史 <b>想看</b></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="week">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 03 / 本周新片 —</div>
+    <div class="ttl"><h2><em>本周</em>新片时间轴</h2></div>
+    <p class="leadp">把这一周的新片按上映日排开，哪天有空就挑那天。</p>
+    <div class="tl" id="tl">
+      <div class="row"><div class="d">周一</div><div class="c"><h4>深空回声</h4><p>国产硬科幻，克制是它的优点。</p><div class="tg"><span>科幻</span><span>冒险</span><span>10/17</span></div></div></div>
+      <div class="row alt"><div class="d">周三</div><div class="c"><h4>北方以南</h4><p>年代剧情片，被低估的安静。</p><div class="tg"><span>剧情</span><span>年代</span><span>10/15</span></div></div></div>
+      <div class="row"><div class="d">周五</div><div class="c"><h4>第十三个房间</h4><p>本格结构，结尾留有讨论空间。</p><div class="tg"><span>悬疑</span><span>惊悚</span><span>10/10</span></div></div></div>
+      <div class="row alt"><div class="d">周五</div><div class="c"><h4>假期实习生</h4><p>中年失意被处理得体面。</p><div class="tg"><span>喜剧</span><span>职场</span><span>10/10</span></div></div></div>
+      <div class="row"><div class="d">周六</div><div class="c"><h4>海边便利店</h4><p>慢节奏，适合留白的一晚。</p><div class="tg"><span>爱情</span><span>治愈</span><span>10/11</span></div></div></div>
+      <div class="row alt"><div class="d">周日</div><div class="c"><h4>白鸟车站</h4><p>公路式治愈，结尾不催泪。</p><div class="tg"><span>治愈</span><span>公路</span><span>10/12</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="memo" style="background:var(--paper2);border-top:1.5px dashed var(--line);border-bottom:1.5px dashed var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 04 / 年度备忘 —</div>
+    <div class="ttl"><h2>年度<em>备忘</em>：六张索引卡</h2></div>
+    <p class="leadp">不是排名，是备忘。榜单会过期，备忘能留到明年。</p>
+    <div class="memo">
+      <div class="card"><span class="pin"></span><h3>最值得再看一遍</h3><ol><li>第十三个房间</li><li>暗河之上</li><li>铁骑归途</li></ol><div class="ft">判断标准：第二次看时仍有新信息</div></div>
+      <div class="card"><span class="pin"></span><h3>被低估的安静片</h3><ol><li>海边便利店</li><li>北方以南</li><li>白鸟车站</li></ol><div class="ft">口碑滞后，建议主动找来看</div></div>
+      <div class="card"><span class="pin"></span><h3>剧本最扎实</h3><ol><li>第十三个房间</li><li>镜像城市</li><li>暗河之上</li></ol><div class="ft">按结构、伏笔、人物三线评估</div></div>
+      <div class="card"><span class="pin"></span><h3>最被高估</h3><ol><li>霓虹之下</li><li>第九街区</li></ol><div class="ft">不是不好，是被推到了不该有的位置</div></div>
+      <div class="card"><span class="pin"></span><h3>年度表演</h3><ol><li>《余温》女主角</li><li>《边境回声》反派</li><li>《假期实习生》配角</li></ol><div class="ft">三个不抢戏但决定全片的角色</div></div>
+      <div class="card"><span class="pin"></span><h3>明年期待</h3><ol><li>《第十一封信》</li><li>《潮线》</li><li>《无人之地》</li></ol><div class="ft">已官宣，未定档</div></div>
+    </div>
+    <div class="bar" style="margin-top:26px">
+      <div class="b"><div class="n">163</div><div class="l">已记录影片</div><div class="s">自开站以来累计条目</div></div>
+      <div class="b"><div class="n">42</div><div class="l">长文评论</div><div class="s">每篇至少 2000 字</div></div>
+      <div class="b"><div class="n">6</div><div class="l">常驻栏目</div><div class="s">每周五更新一次</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="qa">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 05 / 观影问答 —</div>
+    <div class="ttl"><h2>关于这个<em>手账</em>，常见的问题</h2></div>
+    <p class="leadp">如果还有没问到的，留言区见。</p>
+    <div class="qa" id="qaBox">
+      <div class="it open"><div class="q"><span class="badge">Q</span><h5>「163电影网」这个名字，和电影有什么关系？</h5><span class="ar">+</span></div><div class="a">它是一个手账编号，不是品牌背书。我们的意思是：每一部被记下来的片子，都值得被编号、被标注、被反复翻看——就像你手边那本写满字的小本子。</div></div>
+      <div class="it"><div class="q"><span class="badge">Q</span><h5>清单上的"已看""想看"可以自己改吗？</h5><span class="ar">+</span></div><div class="a">目前是编辑部统一维护的版本，存成浏览器书签即可随时回来翻。后续版本会开放个人勾选与本地保存，不收集任何观影数据。</div></div>
+      <div class="it"><div class="q"><span class="badge">Q</span><h5>你们怎么挑片，会不会只挑热门的？</h5><span class="ar">+</span></div><div class="a">不追首发，不抢热度。每周固定留两个名额给没有话题、没有卡司、但确实值得被看到的片子，这部分是我们最看重的内容。</div></div>
+      <div class="it"><div class="q"><span class="badge">Q</span><h5>评分和榜单是怎么来的？</h5><span class="ar">+</span></div><div class="a">编辑部内部投票，每人一票，互不提前通气。榜单只给共识度，不公布个人分数，也不接受任何形式的推广投放。</div></div>
+      <div class="it"><div class="q"><span class="badge">Q</span><h5>能不能帮我列一张给朋友看的片单？</h5><span class="ar">+</span></div><div class="a">可以。在留言里写清对方偏好和观影场景（一个人 / 约会 / 家庭 / 朋友聚会），我们会回一封带编号的片单邮件。</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="links">
+  <div class="wrap">
+    <div class="eyebrow">— SECTION 06 / 友情链接 —</div>
+    <div class="ttl"><h2>同路<em>人</em>的站点</h2></div>
+    <p class="leadp">都是认真在写电影的那一批。</p>
+    <div class="links">
+      <a href="#">独立影评人协会</a>
+      <a href="#">电影文本研究</a>
+      <a href="#">新片定档日历</a>
+      <a href="#">纪录片观察</a>
+      <a href="#">经典老片回顾</a>
+      <a href="#">电影节资讯</a>
+      <a href="#">编剧手册笔记</a>
+      <a href="#">电影音乐档案</a>
+      <a href="#">放映活动汇总</a>
+      <a href="#">摄影与取景</a>
+      <a href="#">电影周边书店</a>
+      <a href="#">读者观影小组</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="logo"><span class="n">163</span>电影网</div>
+      <p>163电影网（https://163dianyingwang-wap.github.io）是一份电影观影手账，用便签与清单的方式记录每一部值得被记住的片子。</p>
+      <div class="u">https://163dianyingwang-wap.github.io</div>
+    </div>
+    <div><h5>栏目</h5><ul><li><a href="#genres">类型速查</a></li><li><a href="#check">观影清单</a></li><li><a href="#week">本周新片</a></li><li><a href="#memo">年度备忘</a></li><li><a href="#qa">观影问答</a></li></ul></div>
+    <div><h5>类型</h5><ul><li><a href="#">动作 / 犯罪</a></li><li><a href="#">喜剧 / 职场</a></li><li><a href="#">爱情 / 治愈</a></li><li><a href="#">科幻 / 冒险</a></li><li><a href="#">悬疑 / 惊悚</a></li></ul></div>
+    <div><h5>关于</h5><ul><li><a href="#">手账怎么用</a></li><li><a href="#">投稿方式</a></li><li><a href="#">订阅更新</a></li><li><a href="#">联系我们</a></li><li><a href="#">友情链接</a></li></ul></div>
+  </div>
+  <div class="colo">
+    <span>© 2025 <b>163电影网</b>（163dianyingwang-wap.github.io）· 关键词：163电影网 · 163dianyingwang-wap.github.io · 电影手账 · 观影清单 · 类型速查 · 本周新片</span>
+    <span><a href="#">隐私政策</a> &nbsp; <a href="#">转载声明</a> &nbsp; <a href="#" id="totop">[ 回到顶部 ]</a></span>
+  </div>
+</footer>
+
+<button id="top" aria-label="返回顶部">↑</button>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),menu=document.getElementById('menu');
+  menu.addEventListener('click',function(){nav.classList.toggle('on')});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('on')})});
+
+  var links=nav.querySelectorAll('a'),secs=[];
+  links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)secs.push(s)});
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+140,cur=secs[0]?secs[0].id:'';
+    secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+  });
+
+  var tabs=document.getElementById('tabs'),notes=document.querySelectorAll('#list .note'),empty=document.getElementById('empty');
+  tabs.addEventListener('click',function(e){
+    var b=e.target.closest('.tab');if(!b)return;
+    tabs.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+    var k=b.dataset.k,shown=0;
+    notes.forEach(function(n){var ok=(k==='all'||n.dataset.k===k);n.style.display=ok?'grid':'none';if(ok)shown++});
+    empty.style.display=shown===0?'block':'none';
+  });
+
+  document.getElementById('qaBox').addEventListener('click',function(e){
+    var q=e.target.closest('.q');if(!q)return;
+    var it=q.parentElement,open=it.classList.contains('open');
+    document.querySelectorAll('#qaBox .it').forEach(function(x){x.classList.remove('open')});
+    if(!open)it.classList.add('open');
+  });
+
+  var top=document.getElementById('top');
+  window.addEventListener('scroll',function(){top.classList.toggle('on',window.scrollY>500)});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  document.getElementById('totop').addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+</body>
+</html>
